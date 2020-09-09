@@ -9,15 +9,14 @@
 | password           | string   | null: false |
 | family_name        | string   | null: false |
 | first_name         | string   | null: false |
-| family_name(kana)  | string   | null: false |
-| first_name(kana)   | string   | null: false |
+| family_name_kana   | string   | null: false |
+| first_name_kana    | string   | null: false |
 | birthday           | date     | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :informations
-- has_many :comments
 
 
 ## items テーブル (出品画像投稿はactive_storageを使用)
@@ -36,7 +35,6 @@
 
 ### Association
 
-- has_meny :comments
 - belongs_to :user
 - has_one :information
 
@@ -45,11 +43,7 @@
 
 | Column             | Type       | Option                         |
 | ------------------ | ---------- | ------------------------------ |
-| card_number        | integer    | null: false                    |
-| card_month         | integer    | null: false                    |
-| card_year          | integer    | null: false                    |
-| security_code      | integer    | null: false                    |
-| postal_code        | integer    | null: false                    |
+| postal_code        | string     | null: false                    |
 | prefecture_id      | integer    | null: false                    |
 | city               | string     | null: false                    |
 | house_number       | string     | null: false                    |
