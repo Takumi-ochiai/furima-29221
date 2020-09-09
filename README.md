@@ -51,16 +51,16 @@
 | house_number       | string     | null: false                    |
 | building_name      | string     |                                |
 | phone_number       | string     | null: false                    |
-| user               | references | null: false, foreign_key: true |
-| item               | references | null: false, foreign_key: true |
+| item_purchase      | references | null: false, foreign_key: true |
 
 ### Association
 
 belongs_to :user
 belongs_to :item
+belongs_to :item_purchase
 
 
-## transactions テーブル
+## item_purchases テーブル
 
 | Column             | Type       | Option                         |
 | ------------------ | ---------- | ------------------------------ |
@@ -71,17 +71,4 @@ belongs_to :item
 
 belongs_to :user
 belongs_to :item
-
-
-## comments テーブル
-
-## | Column             | Type       | Option                         |
-## | ------------------ | ---------- | ------------------------------ |
-## | comment_text       | text       | null: false                    |
-## | user               | references | null: false, foreign_key: true |
-## | item               | references | null: false, foreign_key: true |
-
-### Association
-
-## - belongs_to :users
-## - belongs_to :items
+has_many :informations
