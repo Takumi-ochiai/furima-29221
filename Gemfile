@@ -62,3 +62,6 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+#☆ActiveHashの導入
+gem 'active_hash'
