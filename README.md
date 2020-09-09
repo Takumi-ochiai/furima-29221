@@ -36,7 +36,6 @@
 ### Association
 
 - belongs_to :user
-- has_one :information
 - has_one :item_purchase
 
 
@@ -55,7 +54,6 @@
 ### Association
 
 belongs_to :item_purchase
-belongs_to :item
 
 
 ## item_purchases テーブル
