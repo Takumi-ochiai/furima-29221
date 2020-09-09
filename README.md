@@ -17,6 +17,7 @@
 
 - has_many :items
 - has_many :informations
+- has_many :transactions
 
 
 ## items テーブル (出品画像投稿はactive_storageを使用)
@@ -37,6 +38,7 @@
 
 - belongs_to :user
 - has_one :information
+- has_one :transactions
 
 
 ## infomations テーブル
@@ -56,6 +58,20 @@
 
 belongs_to :user
 belongs_to :item
+
+
+## transactions テーブル
+
+| Column             | Type       | Option                         |
+| ------------------ | ---------- | ------------------------------ |
+| user               | references | null: false, forrign_key: true |
+| item               | references | null: false, forrign_key: true |
+
+### Association
+
+belongs_to :user
+belongs_to :item
+
 
 ## comments テーブル
 
