@@ -16,8 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :informations
-- has_many :transactions
+- has_many :item_purchases
 
 
 ## items テーブル (出品画像投稿はactive_storageを使用)
@@ -38,7 +37,7 @@
 
 - belongs_to :user
 - has_one :information
-- has_one :transactions
+- has_one :item_purchase
 
 
 ## infomations テーブル
@@ -55,9 +54,8 @@
 
 ### Association
 
-belongs_to :user
-belongs_to :item
 belongs_to :item_purchase
+belongs_to :item
 
 
 ## item_purchases テーブル
@@ -71,4 +69,4 @@ belongs_to :item_purchase
 
 belongs_to :user
 belongs_to :item
-has_many :informations
+has_one :information
