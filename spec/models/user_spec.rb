@@ -36,10 +36,20 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Family name kana can't be blank", "Family name kana Full-width katakana caracters")
       end
+      it "family_name_kanaがカナ以外では登録できない" do
+        @user.family_name_kana = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Family name kana Full-width katakana caracters")
+      end
       it "first_name_kanaが空だと登録できない" do
         @user.first_name_kana = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("First name kana can't be blank", "First name kana Full-width katakana caracters")
+      end
+      it "first_name_kanaがカナ以外では登録できない" do
+        @user.first_name_kana = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name kana Full-width katakana caracters")
       end
       it "birthdayが空だと登録できない" do
         @user.birthday = ""
