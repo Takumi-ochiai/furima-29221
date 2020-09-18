@@ -1,28 +1,30 @@
 class Item < ApplicationRecord
-  #アクティブハッシュを使えるようにする
+  # アクティブハッシュを使えるようにする
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :state
   belongs_to_active_hash :delivery_charge
   belongs_to_active_hash :shipping_area
   belongs_to_active_hash :shipping_day
-  #アクティブハッシュを使えるようにする
-  #アクティブストレージ
+  # アクティブハッシュを使えるようにする
+  # アクティブストレージ
   has_one_attached :image
-  #アクティブストレージ
+  # アクティブストレージ
 
   with_options presence: true do
     validates :image
     validates :name
     validates :description
-    validates :category_id, numericality: { other_than: 1 }
-    validates :state_id, numericality: { other_than: 1 }
-    validates :delivery_charge_id, numericality: { other_than: 1 }
-    validates :shipping_area_id, numericality: { other_than: 1 }
-    validates :shipping_day_id, numericality: { other_than: 1 }
-    validates :price, format: { with: /[3-9][0-9]{2}|[1-9][0-9]{3,6}/, message: "Price Half-width number"}
-
+    validates :price
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
+      validates :state_id
+      validates :delivery_charge_id
+      validates :shipping_area_id
+      validates :shipping_day_id
+    end
   end
 
+  validates :price, numericality: { only_integer: true, message: 'Half-width number' }
+  validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
 end
-

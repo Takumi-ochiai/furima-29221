@@ -1,4 +1,4 @@
-window.addEventListener('load', function(){
+window.addEventListener('turbolinks:load', function(){
 
   const textField = document.getElementById("item-price")
   const addTax = document.getElementById("add-tax-price")
@@ -6,8 +6,8 @@ window.addEventListener('load', function(){
 
   textField.addEventListener("change", function(){
     const value = textField.value
-    addTax.textContent = value * 0.1
-    profit.textContent = value * 0.9
+    addTax.textContent = Math.floor(value * 0.1)
+    profit.textContent = Math.floor(value * 0.9)
   })
 
 })
