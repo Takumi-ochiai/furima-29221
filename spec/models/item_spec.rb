@@ -31,8 +31,13 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Price Half-width number')
     end
-    it '値段が¥300未満、もしくは¥9999999より大きいと登録できない' do
-      @item.price = '100 || 10000000'
+    it '値段が¥300未満だと登録できない' do
+      @item.price = '100'
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Price Out of setting range')
+    end
+    it '値段が¥9999999より大きいと登録できない' do
+      @item.price = '10000000'
       @item.valid?
       expect(@item.errors.full_messages).to include('Price Out of setting range')
     end

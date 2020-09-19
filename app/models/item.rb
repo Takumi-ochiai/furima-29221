@@ -16,6 +16,7 @@ class Item < ApplicationRecord
     validates :name
     validates :description
     validates :price
+    # numericalityは数字であることの条件
     with_options numericality: { other_than: 1 } do
       validates :category_id
       validates :state_id
@@ -26,5 +27,7 @@ class Item < ApplicationRecord
   end
 
   validates :price, numericality: { only_integer: true, message: 'Half-width number' }
+  # validates_inclusion_ofについて
+  # https://qiita.com/suzy1031/items/c3220a3749aec48d3d43
   validates_inclusion_of :price, in: 300..9_999_999, message: 'Out of setting range'
 end
