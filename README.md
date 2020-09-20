@@ -21,17 +21,17 @@
 
 ## items テーブル (出品画像投稿はactive_storageを使用)
 
-| Column             | Type       | Option                        |
-| ------------------ | ---------- | ----------------------------- |
-| name               | string     | null: false                   |
-| description        | text       | null: false                   |
-| category_id        | integer    | null: false                   |
-| state_id           | integer    | null: false                   |
-| delivery_charge_id | integer    | null: false                   |
-| shipping_area_id   | integer    | null: false                   |
-| shipping_day_id    | integer    | null: false                   |
-| price              | integer    | null: false                   |
-| user               | references | null: fals, foreign_key: true |
+| Column             | Type       | Option                         |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| description        | text       | null: false                    |
+| category_id        | integer    | null: false                    |
+| state_id           | integer    | null: false                    |
+| delivery_charge_id | integer    | null: false                    |
+| shipping_area_id   | integer    | null: false                    |
+| shipping_day_id    | integer    | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
