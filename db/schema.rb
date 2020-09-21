@@ -52,9 +52,10 @@ ActiveRecord::Schema.define(version: 2020_09_15_100801) do
     t.integer "shipping_area_id"
     t.integer "shipping_day_id"
     t.integer "price"
-    t.integer "user"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
