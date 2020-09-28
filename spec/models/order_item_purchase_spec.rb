@@ -16,10 +16,20 @@ RSpec.describe OrderItemPurchase, type: :model do
       @order_item_purchase.valid?
       expect(@order_item_purchase.errors.full_messages).to include("Postal code can't be blank")
     end
+    it '郵便番号-がないと購入できない' do
+      @order_item_purchase.postal_code = '1234567'
+      @order_item_purchase.valid?
+      expect(@order_item_purchase.errors.full_messages).to include('Postal code include -')
+    end
     it '都道府県がなければ購入できない' do
       @order_item_purchase.prefecture_id = ''
       @order_item_purchase.valid?
       expect(@order_item_purchase.errors.full_messages).to include('Prefecture is not a number')
+    end
+    it '都道府県が---を示すid値（1）だと購入できない' do
+      @order_item_purchase.prefecture_id = '1'
+      @order_item_purchase.valid?
+      expect(@order_item_purchase.errors.full_messages).to include('Prefecture must be other than 1')
     end
     it '市区町村がなければ購入できない' do
       @order_item_purchase.city = ''
@@ -35,6 +45,16 @@ RSpec.describe OrderItemPurchase, type: :model do
       @order_item_purchase.phone_number = ''
       @order_item_purchase.valid?
       expect(@order_item_purchase.errors.full_messages).to include("Phone number can't be blank")
+    end
+    it '電話番号に-があると購入できない' do
+      @order_item_purchase.phone_number = '080-9999-222'
+      @order_item_purchase.valid?
+      expect(@order_item_purchase.errors.full_messages).to include("Phone number include numbers")
+    end
+    it '電話番号が12桁以上だと購入できない' do
+      @order_item_purchase.phone_number = '123456789012'
+      @order_item_purchase.valid?
+      expect(@order_item_purchase.errors.full_messages).to include("Phone number include numbers")
     end
 
     context '商品購入が上手くいく時'

@@ -5,10 +5,10 @@ class OrderItemPurchase
 
   # orderモデルから引用
   with_options presence: true do
-    validates :postal_code
+    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'include -'}
     validates :city
     validates :house_number
-    validates :phone_number
+    validates :phone_number, format: { with: /\A\d{10,11}\z/, message: 'include numbers'}
   end
 
   validates :prefecture_id, numericality: { other_than: 1 }

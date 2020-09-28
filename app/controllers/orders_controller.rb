@@ -2,12 +2,12 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
+    redirect_to root_path if (current_user.id == @item.user_id) || @item.item_purchase
     @order = OrderItemPurchase.new
   end
 
   def create
     @order = OrderItemPurchase.new(order_params)
-
     if @order.valid?
       pay_item
       @order.save
