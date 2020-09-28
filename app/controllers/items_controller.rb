@@ -24,11 +24,10 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.destroy
-       redirect_to root_path
+      redirect_to root_path
     else
-       redirect_to item_path(@item.id)
+      redirect_to item_path(@item.id)
     end
-
   end
 
   def edit
@@ -37,9 +36,9 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-       redirect_to item_path(@item.id)
+      redirect_to item_path(@item.id)
     else
-       render'edit'
+      render 'edit'
     end
   end
 
@@ -52,5 +51,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-  
 end

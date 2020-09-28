@@ -76,3 +76,9 @@ gem 'devise'
 
 #☆
 gem 'pry-rails'
+
+#☆クレジット支払い設計
+gem'payjp'
+
+#☆
+gem 'pry-rails'

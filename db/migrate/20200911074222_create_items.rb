@@ -9,7 +9,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :shipping_area_id
       t.integer :shipping_day_id
       t.integer :price
-      t.references :user foreign_key: true
+      t.references :user, foreign_key: true
       # referencesでuser_idというカラムになるはずだが、なってないのでforeign_key: trueを追記してみる
       t.timestamps
     end

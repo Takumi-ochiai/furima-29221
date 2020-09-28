@@ -39,7 +39,7 @@
 - has_one :item_purchase
 
 
-## infomations テーブル
+## orders テーブル
 
 | Column             | Type       | Option                         |
 | ------------------ | ---------- | ------------------------------ |
