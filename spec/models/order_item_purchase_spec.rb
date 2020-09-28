@@ -27,7 +27,7 @@ RSpec.describe OrderItemPurchase, type: :model do
       expect(@order_item_purchase.errors.full_messages).to include('Prefecture is not a number')
     end
     it '都道府県が---を示すid値（1）だと購入できない' do
-      @order_item_purchase.prefecture_id = '1'
+      @order_item_purchase.prefecture_id = 1
       @order_item_purchase.valid?
       expect(@order_item_purchase.errors.full_messages).to include('Prefecture must be other than 1')
     end
