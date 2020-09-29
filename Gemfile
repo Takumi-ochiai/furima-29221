@@ -82,3 +82,6 @@ gem'payjp'
 
 #☆
 gem 'pry-rails'
+
+#☆c3
+gem "aws-sdk-s3", require: false
